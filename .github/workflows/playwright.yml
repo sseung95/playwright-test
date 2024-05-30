@@ -25,8 +25,8 @@ jobs:
         path: playwright-report/
         retention-days: 30
     - name: Notify initial repository
-        run: |
-          curl -X POST https://api.github.com/repos/sseung95/playwright-trigger-test/dispatches \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.INITIAL_REPO_TOKEN }}" \
-            -d '{"event_type":"playwright-tests-completed", "client_payload": {"status": "${{ job.status }}"}}'
+      run: |
+        curl -X POST https://api.github.com/repos/sseung95/playwright-trigger-test/dispatches \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.INITIAL_REPO_TOKEN }}" \
+          -d '{"event_type":"playwright-tests-completed", "client_payload": {"status": "${{ job.status }}"}}'
